@@ -45,9 +45,10 @@ const Navbar = () => {
               <div>
                 <img className="w-16" src={logo} alt="logo" />
                 <p className="text-sm text-gray-400 mt-2">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Earum soluta perspiciatis molestias enim cum repellat, magnam
-                  exercitationem distinctio aliquid nam.
+                  I'm Akshat Jain, a full-stack developer skilled in MERN,
+                  Next.js, and React Native. I’ve worked on multiple
+                  internships, contributed to open source, and am building
+                  Guardian AI, an AI-driven safety app.
                 </p>
               </div>
               <ul className="flex flex-col gap-4">
