@@ -1,25 +1,12 @@
-import { FaLinkedinIn, FaReact, FaGithub } from "react-icons/fa";
+import { FaReact } from "react-icons/fa";
+import SocialLinks from "../common/SocialLinks";
 import { SiTailwindcss, SiFigma, SiNextdotjs } from "react-icons/si";
 const Media = () => {
   return (
     <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
       <div>
         <h2 className="text-base uppercase font-titleFont mb-4">Find me in</h2>
-        <div className="flex gap-4">
-          <a href="https://github.com/AkshatJain481" target="_blank">
-            <span className="bannerIcon">
-              <FaGithub />
-            </span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/akshat-jain-264810276/"
-            target="_blank"
-          >
-            <span className="bannerIcon">
-              <FaLinkedinIn />
-            </span>
-          </a>
-        </div>
+        <SocialLinks />
       </div>
       <div>
         <h2 className="text-base uppercase font-titleFont mb-4">
