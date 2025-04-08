@@ -4,5 +4,14 @@ import apyfluxImg from "./images/apyflux.png";
 import campusCodeImg from "./images/campusCode.png";
 import fabrixImg from "./images/fabrix.png";
 import influexImg from "./images/influex.png";
+import contactImg from "./images/contactImg.png";
 
-export { logo, bannerImg, apyfluxImg, campusCodeImg, fabrixImg, influexImg };
+export {
+  logo,
+  bannerImg,
+  apyfluxImg,
+  campusCodeImg,
+  fabrixImg,
+  influexImg,
+  contactImg,
+};
