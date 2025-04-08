@@ -1,6 +1,6 @@
-import { FaReact } from "react-icons/fa";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 import SocialLinks from "../common/SocialLinks";
-import { SiTailwindcss, SiFigma, SiNextdotjs } from "react-icons/si";
+import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 const Media = () => {
   return (
     <div className="flex flex-col xl:flex-row gap-6 lgl:gap-0 justify-between">
@@ -23,7 +23,7 @@ const Media = () => {
             <SiTailwindcss />
           </span>
           <span className="bannerIcon">
-            <SiFigma />
+            <FaNodeJs />
           </span>
         </div>
       </div>
