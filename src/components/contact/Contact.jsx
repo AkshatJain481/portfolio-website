@@ -10,7 +10,7 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   // ========== Email Validation start here ==============
   const emailValidation = () => {
     return String(email)
@@ -19,7 +19,7 @@ const Contact = () => {
   };
   // ========== Email Validation end here ================
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
     if (username === "") {
       setErrMsg("Username is required!");
@@ -30,21 +30,48 @@ const Contact = () => {
     } else if (!emailValidation(email)) {
       setErrMsg("Give a valid Email!");
     } else if (subject === "") {
-      setErrMsg("Plese give your Subject!");
+      setErrMsg("Please give your Subject!");
     } else if (message === "") {
       setErrMsg("Message is required!");
     } else {
-      setSuccessMsg(
-        `Thank you dear ${username}, Your Messages has been sent Successfully!`
-      );
       setErrMsg("");
-      setUsername("");
-      setPhoneNumber("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      try {
+        setIsLoading(true);
+        const response = await fetch("https://formspree.io/f/movepzpj", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: username,
+            phone: phoneNumber,
+            email,
+            subject,
+            message,
+          }),
+        });
+
+        const result = await response.json();
+        if (result.ok || response.ok) {
+          setSuccessMsg(
+            `Thank you dear ${username}, your message has been sent successfully!`
+          );
+          setUsername("");
+          setPhoneNumber("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+        } else {
+          setErrMsg("Something went wrong. Please try again later.");
+        }
+      } catch (error) {
+        setErrMsg("Something went wrong. Please try again later.");
+      }
+      setIsLoading(false);
     }
   };
+
   return (
     <section
       id="contact"
@@ -143,21 +170,12 @@ const Contact = () => {
               <div className="w-full">
                 <button
                   onClick={handleSend}
+                  disabled={isLoading}
                   className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
                 >
-                  Send Message
+                  {isLoading ? "Sending..." : "Send Message"}
                 </button>
               </div>
-              {errMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-orange-500 text-base tracking-wide animate-bounce">
-                  {errMsg}
-                </p>
-              )}
-              {successMsg && (
-                <p className="py-3 bg-gradient-to-r from-[#1e2024] to-[#23272b] shadow-shadowOne text-center text-green-500 text-base tracking-wide animate-bounce">
-                  {successMsg}
-                </p>
-              )}
             </form>
           </div>
         </div>
